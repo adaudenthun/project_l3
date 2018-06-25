@@ -17,7 +17,7 @@ class TeamController extends Controller{
         $teams = $em->getRepository('App\Entity\Team')->findAll();
 
         return $this->render('team/index.html.twig', array(
-            'team' => $teams
+            'teams' => $teams
         ));
     }
 
