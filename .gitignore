@@ -5,3 +5,8 @@
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
+
+###> symfony/web-server-bundle ###
+/.web-server-pid
+/.idea/
+###< symfony/web-server-bundle ###
