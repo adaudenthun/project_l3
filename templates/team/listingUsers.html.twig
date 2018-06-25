@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Les Equipes {% endblock %}
+{% block title %} Liste des utilisateurs {% endblock %}
 
 {% block body %}
 
@@ -11,15 +11,15 @@
         <thead>
         <tr>
             <th>Nom</th>
-            <th>Actions</th>
+            <th>prénom</th>
         </tr>
         </thead>
         <tbody>
-        {% for team in teams %}
+        {% for user in listeUsers %}
 
             <tr>
-                <td>{{ team.nom }}</td>
-                <td><a href="{{ path('app_team_listingUsers', { 'idTeam': team.id }) }}">Liste des utilisateurs</a></td>
+                <td>{{ user.nom }}</td>
+                <td>{{ user.prenom }}</td>
             </tr>
 
         {% endfor %}
@@ -27,7 +27,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_team_new') }}">Créer une équipe</a>
+    <a href="{{ path('app_team_index') }}">Retour à l'index</a>
 
     </div>
 {% endblock %}
