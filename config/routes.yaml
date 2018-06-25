@@ -12,7 +12,7 @@ app_team_index:
 
 app_team_new:
       path: /team/new
-      controller: App\Controller\TeamController::new
+      controller: App\Controller\TeamController::newTeam
 
 app_team_rejoindreTeam:
       path: /team/rejoindreTeam/{idUser}/{idTeam}

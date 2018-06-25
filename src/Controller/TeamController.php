@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Team;
 use App\Entity\UserTeam;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -27,6 +28,7 @@ class TeamController extends Controller{
 
         $form = $this->createFormBuilder($team)
             ->add('nom', TextType::class)
+            ->add('Valider', SubmitType::class)
             ->getForm();
 
         $form->handleRequest($request);
