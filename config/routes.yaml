@@ -22,7 +22,7 @@ app_team_rejoindreTeam:
           idTeam: '\d+'
 
 app_team_listingUsers:
-      path: /team/rejoindreTeam/{idUser}/{idTeam}
+      path: /team/rejoindreTeam/{idTeam}
       controller: App\Controller\TeamController::listingUsers
       requirements:
           idTeam: '\d+'
