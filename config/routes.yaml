@@ -26,3 +26,11 @@ app_team_listingUsers:
       controller: App\Controller\TeamController::listingUsers
       requirements:
           idTeam: '\d+'
+
+app_user_index:
+      path: /user
+      controller: App\Controller\UserController::index
+
+app_user_newUser:
+      path: /user/new
+      controller: App\Controller\UserController::newUser
