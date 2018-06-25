@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Les Equipes {% endblock %}
+
+{% block body %}
+
+
+    <div class="container-fluid"></div>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Equipe 1</th>
+            <th>Equipe 2</th>
+            <th>Utilisateur</th>
+            <th>Score</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for pari in paris %}
+
+            <tr>
+                <td>{{ pari.equipe1 }}</td>
+                <td>{{ pari.equipe2 }}</td>
+                <td>{{ pari.user }}</td>
+                <td>{{ pari.user }}</td>
+                <td><button href="{{ path('app_team_listingUsers', { 'idTeam': team.id }) }}">Liste des utilisateurs</button></td>
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_team_new') }}">Créer une équipe</a>
+
+    </div>
+{% endblock %}

@@ -1,3 +1,28 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+app_paris_index:
+      path: /paris
+      controller: App\Controller\ParisController::index
+
+app_team_index:
+      path: /team
+      controller: App\Controller\TeamController::index
+
+app_team_new:
+      path: /team/new
+      controller: App\Controller\TeamController::new
+
+app_team_rejoindreTeam:
+      path: /team/rejoindreTeam/{idUser}/{idTeam}
+      controller: App\Controller\TeamController::rejoindreTeam
+      requirements:
+          idUser: '\d+'
+          idTeam: '\d+'
+
+app_team_listingUsers:
+      path: /team/rejoindreTeam/{idUser}/{idTeam}
+      controller: App\Controller\TeamController::listingUsers
+      requirements:
+          idTeam: '\d+'
