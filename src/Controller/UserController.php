@@ -10,6 +10,12 @@ namespace App\Controller;
 
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+
 
 class UserController extends Controller{
 
@@ -30,9 +36,9 @@ class UserController extends Controller{
 
         $form = $this->createFormBuilder($user)
             ->add('lastname', TextType::class)
-            ->add('firstname', TextareaType::class)
-            ->add('sexe', FileType::class)
-            ->add('age')
+            ->add('firstname', TextType::class)
+            ->add('sexe', TextType::class)
+            ->add('age',TextType::class)
             ->add('create', SubmitType::class, array('label' => 'Create User'))
             ->getForm();
 
