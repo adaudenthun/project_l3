@@ -14,10 +14,10 @@ class TeamController extends Controller{
 
         $em = $this->getDoctrine()->getManager();
 
-        $team = $em->getRepository('App\Entity\Team')->findAll();
+        $teams = $em->getRepository('App\Entity\Team')->findAll();
 
         return $this->render('team/index.html.twig', array(
-            'team' => $team
+            'team' => $teams
         ));
     }
 

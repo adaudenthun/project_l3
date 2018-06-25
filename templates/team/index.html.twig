@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Les Equipes {% endblock %}
+
+{% block body %}
+
+
+    <div class="container-fluid"></div>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for team in teams %}
+
+            <tr>
+                <td>{{ team.nom }}</td>
+                <td><button href="{{ path('app_team_listingUsers', { 'idTeam': team.id }) }}">Liste des utilisateurs</button></td>
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_team_new') }}">Créer une équipe</a>
+
+    </div>
+{% endblock %}
