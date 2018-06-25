@@ -24,8 +24,8 @@
                 <td>{{ pari.equipe1 }}</td>
                 <td>{{ pari.equipe2 }}</td>
                 <td>{{ pari.user }}</td>
-                <td>{{ pari.user }}</td>
-                <td><button href="{{ path('app_team_listingUsers', { 'idTeam': team.id }) }}">Liste des utilisateurs</button></td>
+                <td>{{ pari.score_equipe1 }} - {{ pari.score_equipe2 }}</td>
+                <td></td>
             </tr>
 
         {% endfor %}
@@ -33,7 +33,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_team_new') }}">Créer une équipe</a>
+    {#<a href="{{ path('app_team_new') }}">Créer une équipe</a>#}
 
     </div>
 {% endblock %}
