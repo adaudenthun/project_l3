@@ -11,10 +11,6 @@ namespace App\Controller;
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use App\Form\UserType;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -35,9 +31,7 @@ class UserController extends Controller{
     }
 
 
-    /**
-     * @Route("/register", name="user_registration")
-     */
+
     function newUser(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
         $user = new User();
