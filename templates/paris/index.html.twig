@@ -4,37 +4,33 @@
 
 {% block body %}
 
+    <div class="table-responsive">
+        <table class="table">
+            <thead class="blue lighten-1">
+                <tr>
+                    <th>Equipe 1</th>
+                    <th>Equipe 2</th>
+                    <th>Utilisateur</th>
+                    <th>Score</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for pari in paris %}
 
-    <div class="container-fluid">
+                <tr>
+                    <td>{{ pari.equipe1 }}</td>
+                    <td>{{ pari.equipe2 }}</td>
+                    <td>{{ pari.user }}</td>
+                    <td>{{ pari.score_equipe1 }} - {{ pari.score_equipe2 }}</td>
+                    <td></td>
+                </tr>
 
-        <div class="table-responsive">
-            <table class="table">
-                <thead class="blue lighten-1">
-                    <tr>
-                        <th>Equipe 1</th>
-                        <th>Equipe 2</th>
-                        <th>Utilisateur</th>
-                        <th>Score</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% for pari in paris %}
+            {% endfor %}
 
-                    <tr>
-                        <td>{{ pari.equipe1 }}</td>
-                        <td>{{ pari.equipe2 }}</td>
-                        <td>{{ pari.user }}</td>
-                        <td>{{ pari.score_equipe1 }} - {{ pari.score_equipe2 }}</td>
-                        <td></td>
-                    </tr>
-
-                {% endfor %}
-
-                </tbody>
-            </table>
-        </div>
+            </tbody>
+        </table>
+    </div>
     {#<a href="{{ path('app_team_new') }}">Créer une équipe</a>#}
 
-    </div>
 {% endblock %}

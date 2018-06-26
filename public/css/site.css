@@ -9,11 +9,27 @@
 }
 
 .global-container {
-    max-width: 1000px;
+    margin: 0 auto;
+    max-width: 1200px;
     padding: 20px;
     min-height: calc(100vh - calc(61px + 173px));
 }
 
 .form-vertical-center {
     margin-top: 15vh;
+}
+
+@media screen and (max-width: 992px) {
+    .navbar-nav .nav-item {
+        width: 100%;
+        text-align: left;
+    }
+
+    .navbar-nav .nav-item .nav-link {
+        padding-left: 1rem !important;
+    }
+
+    .navbar-nav .btn {
+        text-align: center;
+    }
 }
