@@ -37,9 +37,12 @@ class UserController extends Controller{
         $form = $this->createFormBuilder($user)
             ->add('lastname', TextType::class)
             ->add('firstname', TextType::class)
+            ->add('username', TextType::class)
             ->add('sexe', TextType::class)
             ->add('age',TextType::class)
-            ->add('create', SubmitType::class, array('label' => 'Create User'))
+            ->add('mail', TextType::class)
+            ->add('password', TextType::class)
+            ->add('create', SubmitType::class, array('label' => 'Créer un compte'))
             ->getForm();
 
         $form->handleRequest($request);
