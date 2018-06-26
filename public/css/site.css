@@ -13,3 +13,7 @@
     padding: 20px;
     min-height: calc(100vh - calc(61px + 173px));
 }
+
+.form-vertical-center {
+    margin-top: 15vh;
+}

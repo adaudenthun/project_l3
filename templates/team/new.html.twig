@@ -4,10 +4,22 @@
 
 {% block body %}
 
-    {{ form_start(form) }}
+    <div class="row justify-content-center form-vertical-center">
+        <div class="col-4">
+            <form name="form" method="post">
+                <p class="h4 text-center mb-4">Créer une équipe</p>
 
-    {{ form_widget(form) }}
+                <div class="md-form">
+                    <i class="fa fa-soccer-ball-o prefix grey-text"></i>
+                    <input type="text" id="{{ form.nom.vars.id }}" name="{{ form.nom.vars.full_name }}" required="required" class="form-control">
+                    {{ form_label(form.nom) }}
+                </div>
 
-    {{ form_end(form) }}
+                <div class="text-center mt-4">
+                    <button class="btn blue lighten-1" id="{{ form.Valider.vars.id }}" name="{{ form.Valider.vars.full_name }}" type="submit">{{ form.Valider.vars.name }}</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
 {% endblock %}
