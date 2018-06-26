@@ -9,9 +9,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
-    /**
-     * @Route("/login", name="security_login")
-     */
+
     public function login(AuthenticationUtils $helper): Response
     {
         return $this->render('security/login.html.twig', [
@@ -22,14 +20,7 @@ class SecurityController extends AbstractController
         ]);
     }
 
-    /**
-     * La route pour se deconnecter.
-     *
-     * Mais celle ci ne doit jamais être executé car symfony l'interceptera avant.
-     *
-     *
-     * @Route("/logout", name="security_logout")
-     */
+
     public function logout(): void
     {
         throw new \Exception('This should never be reached!');
