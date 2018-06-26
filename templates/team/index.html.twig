@@ -20,7 +20,7 @@
 
                     <tr>
                         <td>{{ team.nom }}</td>
-                        <td><button href="{{ path('app_team_listingUsers', { 'idTeam': team.id }) }}">Liste des utilisateurs</button></td>
+                        <td><a href="{{ path('app_team_listingUsers', { 'idTeam': team.id }) }}">Liste des utilisateurs</a></td>
                     </tr>
 
                 {% endfor %}
@@ -28,7 +28,6 @@
                 </tbody>
             </table>
         </div>
-
     <a href="{{ path('app_team_new') }}">Créer une équipe</a>
 
     </div>

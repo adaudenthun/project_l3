@@ -12,7 +12,7 @@ app_team_index:
 
 app_team_new:
       path: /team/new
-      controller: App\Controller\TeamController::new
+      controller: App\Controller\TeamController::newTeam
 
 app_team_rejoindreTeam:
       path: /team/rejoindreTeam/{idUser}/{idTeam}
@@ -22,7 +22,15 @@ app_team_rejoindreTeam:
           idTeam: '\d+'
 
 app_team_listingUsers:
-      path: /team/rejoindreTeam/{idUser}/{idTeam}
+      path: /team/rejoindreTeam/{idTeam}
       controller: App\Controller\TeamController::listingUsers
       requirements:
           idTeam: '\d+'
+
+app_user_index:
+      path: /user
+      controller: App\Controller\UserController::index
+
+app_user_newUser:
+      path: /user/new
+      controller: App\Controller\UserController::newUser
