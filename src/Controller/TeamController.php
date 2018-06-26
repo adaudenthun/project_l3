@@ -33,7 +33,6 @@ class TeamController extends Controller{
 
         $form->handleRequest($request);
 
-
         if ($form->isSubmitted() && $form->isValid()) {
             $team = $form->getData();
 

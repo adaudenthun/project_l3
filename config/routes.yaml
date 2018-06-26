@@ -6,6 +6,17 @@ app_paris_index:
       path: /paris
       controller: App\Controller\ParisController::index
 
+app_paris_new:
+      path: /paris/new/{equipe1}/{equipe2}
+      controller: App\Controller\ParisController::parierMatch
+      requirements:
+                equipe1: "[a-zA-Z]{2,15}"
+                equipe2: "[a-zA-Z]{2,15}"
+
+app_match_index:
+      path: /match
+      controller: App\Controller\ParisController::indexMatch
+
 app_team_index:
       path: /team
       controller: App\Controller\TeamController::index

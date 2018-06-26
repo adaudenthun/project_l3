@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {% endblock %}
+
+{% block body %}
+
+    <h3>Créer un Pari pour le match {{ equipe1 }} / {{ equipe2 }}</h3>
+
+    {{ form_start(form) }}
+
+    {{ form_widget(form) }}
+
+    {{ form_end(form) }}
+
+{% endblock %}
