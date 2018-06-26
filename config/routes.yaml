@@ -1,6 +1,6 @@
 app_index:
     path: /
-    controller: App\Controller\DefaultController::index
+    controller: App\Controller\IndexController::index
 
 app_paris_index:
       path: /paris
@@ -45,3 +45,12 @@ app_user_index:
 app_user_newUser:
       path: /user/new
       controller: App\Controller\UserController::newUser
+
+app_security_login:
+      path: /login
+
+app_security_logout:
+      path: /logout
+
+app_admin:
+      path: /admin
