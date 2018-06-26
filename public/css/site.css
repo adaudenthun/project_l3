@@ -1,3 +1,7 @@
+.navbar {
+    background-image: linear-gradient(to left top, #ef9a9a, #ef7d79, #ea5e56, #e23c31, #d50000);
+}
+
 .nav-link:hover, .nav-item.active {
     color: white !important;
     background-color: rgba(255,255,255,.2);

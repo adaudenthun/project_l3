@@ -1,6 +1,6 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+app_index:
+    path: /
+    controller: App\Controller\DefaultController::index
 
 app_paris_index:
       path: /paris
