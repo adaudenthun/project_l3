@@ -131,7 +131,7 @@ class User implements UserInterface, \Serializable
 
     public function getUsername(): ?string
     {
-        return $this->usernmame;
+        return $this->username;
     }
 
     public function setUsername(string $username): self
