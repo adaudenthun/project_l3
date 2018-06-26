@@ -26,7 +26,7 @@ class UserController extends Controller{
         $user = $em->getRepository('App\Entity\User')->findAll();
 
         return $this->render('user/index.html.twig', array(
-            'user' => $user
+            'users' => $user
         ));
     }
 
