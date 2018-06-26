@@ -42,9 +42,9 @@ app_user_index:
       path: /user
       controller: App\Controller\UserController::index
 
-app_user_newUser:
-      path: /user/new
-      controller: App\Controller\UserController::newUser
+#app_user_newUser:
+#     path: /user/new
+#      controller: App\Controller\UserController::newUser
 
 app_security_login:
       path: /login
@@ -57,3 +57,7 @@ app_security_logout:
 app_admin:
       path: /admin
       controller: App\Controller\IndexController::admin
+
+app_register:
+      path: /register
+      controller: App\Controller\UserController::newUser

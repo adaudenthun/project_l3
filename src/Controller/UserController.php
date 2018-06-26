@@ -15,6 +15,10 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use App\Form\UserType;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
 
 
 class UserController extends Controller{
@@ -30,39 +34,36 @@ class UserController extends Controller{
         ));
     }
 
-    function newUser(Request $request){
 
+    /**
+     * @Route("/register", name="user_registration")
+     */
+    function newUser(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    {
         $user = new User();
-
-        $form = $this->createFormBuilder($user)
-            ->add('lastname', TextType::class)
-            ->add('firstname', TextType::class)
-            ->add('username', TextType::class)
-            ->add('sexe', TextType::class)
-            ->add('age',TextType::class)
-            ->add('mail', TextType::class)
-            ->add('password', TextType::class)
-            ->add('create', SubmitType::class, array('label' => 'Créer un compte'))
-            ->getForm();
+        $form = $this->createForm(UserType::class, $user);
 
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $user = $form->getData();
+            $password = $passwordEncoder->encodePassword($user, $user->getMdp());
+            $user->setMdp($password);
 
-            $entityManager = $this->getDoctrine()->getManager();
+            // Par defaut l'utilisateur aura toujours le rôle ROLE_USER
+            $user->setRoles(['ROLE_USER']);
 
+            // On enregistre l'utilisateur dans la base
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
 
-            $entityManager->persist($user);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('app_user_index');
+            return $this->redirectToRoute('app_security_login');
         }
 
-        return $this->render('user/index.html.twig', array(
-            'formUser' => $form->createView(),
-        ));
+        return $this->render(
+            'register.html.twig',
+            array('formUser' => $form->createView())
+        );
 
     }
 }
