@@ -18,8 +18,8 @@
 
                 <tr>
                     <td>{{ team.nom }}</td>
-                    <td><a href="{{ path('app_team_listingUsers', { 'idTeam': team.id }) }}">Liste des utilisateurs</a></td>
-                    <td><a href="{{ path('app_team_rejoindreTeam', {'idUser': userId, 'idTeam': team.id }) }}">Rejoindre l' équipe</a></td>
+                    <td><a href="{{ path('app_team_listingUsers', { 'idTeam': team.id }) }}">Liste des utilisateurs <i class="fa fa-long-arrow-right light-blue-text"></i></a></td>
+                    <td><a href="{{ path('app_team_rejoindreTeam', {'idUser': userId, 'idTeam': team.id }) }}">Rejoindre l' équipe <i class="fa fa-long-arrow-right light-blue-text"></i></a></td>
                 </tr>
 
             {% endfor %}

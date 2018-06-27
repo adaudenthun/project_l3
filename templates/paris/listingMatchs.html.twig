@@ -4,47 +4,45 @@
 
 {% block body %}
 
+    <div class="table-responsive">
+        <table class="table">
+            <thead class="blue lighten-1">
+            <tr>
+                <th>Equipe 1</th>
+                <th>Equipe 2</th>
+                <th>Date</th>
+                <th>Live</th>
+                <th>Score</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
 
-    <div class="container-fluid"></div>
+            {% for match in matchs %}
 
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>Equipe 1</th>
-            <th>Equipe 2</th>
-            <th>Date</th>
-            <th>Live</th>
-            <th>Score</th>
-            <th>Action</th>
-        </tr>
-        </thead>
-        <tbody>
-
-        {% for match in matchs %}
-
-                <tr>
-                    <td>{{ match.equipe1 }}</td>
-                    <td>{{ match.equipe2 }}</td>
-                    <td>{{ match.date }}</td>
-                    <td>
-                        {% if match.live %}En cours{% elseif match.score is not null and match.score is not null %}Match terminé{% else %}Match non commencé{% endif %}
-                    </td>
-                    <td>
-                        {% if match.score %}
-                            {{ match.score.0 }} - {{ match.score.1 }}
+                    <tr>
+                        <td>{{ match.equipe1 }}</td>
+                        <td>{{ match.equipe2 }}</td>
+                        <td>{{ match.date }}</td>
+                        <td>
+                            {% if match.live %}En cours{% elseif match.score is not null and match.score is not null %}Match terminé{% else %}Match non commencé{% endif %}
+                        </td>
+                        <td>
+                            {% if match.score %}
+                                {{ match.score.0 }} - {{ match.score.1 }}
+                            {% endif %}
+                        </td>
+                        {% if match.score is null and match.score is null and match.live !="true" %}
+                            <td><a href="{{ path('app_paris_new', { 'equipe1': match.equipe1, 'equipe2': match.equipe2 }) }}">Parier sur ce Match <i class="fa fa-long-arrow-right light-blue-text"></i></a></td>
+                            {% else %}
+                            <td>Impossible de parier</td>
                         {% endif %}
-                    </td>
-                    {% if match.score is null and match.score is null and match.live !="true" %}
-                        <td><a href="{{ path('app_paris_new', { 'equipe1': match.equipe1, 'equipe2': match.equipe2 }) }}">Parier sur ce Match</a></td>
-                        {% else %}
-                        <td>Impossible de parier</td>
-                    {% endif %}
-                </tr>
+                    </tr>
 
-        {% endfor %}
+            {% endfor %}
 
-        </tbody>
-    </table>
-
+            </tbody>
+        </table>
     </div>
+
 {% endblock %}
