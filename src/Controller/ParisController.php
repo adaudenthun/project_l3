@@ -92,53 +92,63 @@ class ParisController extends Controller{
 
         $idUser = $this->getUser()->getId();
 
-        $pari = new Paris();
-
-        $form = $this->createFormBuilder($pari)
-            ->add('score_equipe1', IntegerType::class)
-            ->add('score_equipe2', IntegerType::class)
-            ->add('Valider', SubmitType::class)
-            ->getForm();
-
-        $form->handleRequest($request);
-
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $pari = $form->getData();
-
-
-            $score1 = $form->get('score_equipe1')->getData();
-            $score2 = $form->get('score_equipe2')->getData();
-
-            $pari->setEquipe1($equipe1);
-            $pari->setEquipe2($equipe2);
-
-            $pari->setDate(new \DateTime());
-
-            $user = $em->getRepository('App\Entity\User')->findOneBy(array(
-                'id' => $idUser
-            ));
-
-            $user = $user->getUsername();
-
-            $pari->setUser($user);
-
-            $pari->setScoreEquipe1($score1);
-            $pari->setScoreEquipe2($score2);
-
-            $em->persist($pari);
-            $em->flush();
-
-            return $this->redirectToRoute('app_paris_index');
-        }
-
-        return $this->render('paris/new.html.twig', array(
-            'equipe1' => $equipe1,
-            'equipe2' => $equipe2,
-            'form' => $form->createView()
+        $user = $em->getRepository('App\Entity\User')->findOneBy(array(
+            'id' => $idUser
         ));
 
+        $user = $user->getUsername();
 
+        $paris = $em->getRepository('App\Entity\Paris')->findOneBy(array(
+            'user' => $user,
+            'equipe1' => $equipe1,
+            'equipe2' => $equipe2
+        ));
+
+        if($paris){
+            return $this->redirectToRoute('app_paris_index');
+        }else {
+
+
+            $pari = new Paris();
+
+            $form = $this->createFormBuilder($pari)
+                ->add('score_equipe1', IntegerType::class)
+                ->add('score_equipe2', IntegerType::class)
+                ->add('Valider', SubmitType::class)
+                ->getForm();
+
+            $form->handleRequest($request);
+
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $pari = $form->getData();
+
+                $score1 = $form->get('score_equipe1')->getData();
+                $score2 = $form->get('score_equipe2')->getData();
+
+                $pari->setEquipe1($equipe1);
+                $pari->setEquipe2($equipe2);
+
+                $pari->setDate(new \DateTime());
+
+                $pari->setUser($user);
+
+                $pari->setScoreEquipe1($score1);
+                $pari->setScoreEquipe2($score2);
+
+                $em->persist($pari);
+                $em->flush();
+
+                return $this->redirectToRoute('app_paris_index');
+            }
+
+            return $this->render('paris/new.html.twig', array(
+                'equipe1' => $equipe1,
+                'equipe2' => $equipe2,
+                'form' => $form->createView()
+            ));
+
+        }
 
     }
 }
