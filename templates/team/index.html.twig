@@ -9,7 +9,8 @@
             <thead class="blue lighten-1">
             <tr>
                 <th>Nom</th>
-                <th>Actions</th>
+                <th>Joueurs</th>
+                <th>Action</th>
             </tr>
             </thead>
             <tbody>
@@ -18,6 +19,7 @@
                 <tr>
                     <td>{{ team.nom }}</td>
                     <td><a href="{{ path('app_team_listingUsers', { 'idTeam': team.id }) }}">Liste des utilisateurs</a></td>
+                    <td><a href="{{ path('app_team_rejoindreTeam', {'idUser': userId, 'idTeam': team.id }) }}">Rejoindre l' équipe</a></td>
                 </tr>
 
             {% endfor %}

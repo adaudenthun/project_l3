@@ -10,8 +10,8 @@ app_paris_new:
       path: /paris/new/{equipe1}/{equipe2}
       controller: App\Controller\ParisController::parierMatch
       requirements:
-                equipe1: "[a-zA-Z]{2,15}"
-                equipe2: "[a-zA-Z]{2,15}"
+                equipe1: "[a-z A-Z]{2,15}"
+                equipe2: "[a-z A-Z]{2,15}"
 
 app_match_index:
       path: /match

@@ -19,10 +19,13 @@ class TeamController extends Controller{
 
         $em = $this->getDoctrine()->getManager();
 
+        $idUser = ($this->getUser()->getId());
+
         $teams = $em->getRepository('App\Entity\Team')->findAll();
 
         return $this->render('team/index.html.twig', array(
-            'teams' => $teams
+            'teams' => $teams,
+            'userId' => $idUser
         ));
     }
 
