@@ -90,4 +90,23 @@ class UserController extends Controller
 
 
     }
+
+
+    function mySpace(Request $request){
+
+        $user = $this->getUser();
+        $form = $this->createForm(UserType::class, $user)
+            ->add('nom', TextType::class, $user->getNom())
+            ->add('username', TextType::class, $user->getUsername())
+            ->add('mail', EmailType::class, $user->getMail())
+            ->add('mdp', RepeatedType::class, array(
+                'type' => PasswordType::class,
+                'first_options' => array('label' => 'Mot de passe'),
+                'second_options' => array('label' => 'Confirmation'),
+            ));
+
+        $form->handleRequest($request);
+
+
+    }
 }

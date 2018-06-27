@@ -14,8 +14,6 @@
             <tr>
                 <th>Username</th>
                 <th>@mail</th>
-                <th>Points</th>
-                <th>Team</th>
                 <th>Modération</th>
             </tr>
             </thead>
@@ -25,8 +23,6 @@
                 <tr>
                     <td>{{ user.username }}</td>
                     <td>{{ user.mail }}</td>
-                    <td></td>
-                    <td></td>
                     <td>
                         <a href="{{ path('app_delete_user', { 'idUser': user.id }) }}">
                             Supprimer le compte
