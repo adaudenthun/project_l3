@@ -90,15 +90,25 @@ class TeamController extends Controller{
 
         $em = $this->getDoctrine()->getManager();
 
-        $user_team = new UserTeam();
+        $team_user = $em->getRepository('App\Entity\UserTeam')->findOneBy(array(
+            'user' => $idUser,
+            'team' => $idTeam
+        ));
 
-        $user_team->setTeam($idTeam);
-        $user_team->setUser($idUser);
+        if($team_user){
+            return $this->redirectToRoute('app_team_index');
+        }else {
 
-        $em->persist($user_team);
-        $em->flush();
+            $user_team = new UserTeam();
 
-        return $this->redirectToRoute('app_team_index');
+            $user_team->setTeam($idTeam);
+            $user_team->setUser($idUser);
+
+            $em->persist($user_team);
+            $em->flush();
+
+            return $this->redirectToRoute('app_team_index');
+        }
     }
 
     function listingUsers($idTeam){

@@ -27,7 +27,7 @@ class Paris
     private $equipe2;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $user;
 
@@ -75,12 +75,12 @@ class Paris
         return $this;
     }
 
-    public function getUser(): ?int
+    public function getUser(): ?string
     {
         return $this->user;
     }
 
-    public function setUser(?int $user): self
+    public function setUser(?string $user): self
     {
         $this->user = $user;
 

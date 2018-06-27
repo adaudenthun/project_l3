@@ -10,16 +10,16 @@
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>Nom</th>
-            <th>prénom</th>
+            <th>Nom d'utilisateur</th>
+            <th>points</th>
         </tr>
         </thead>
         <tbody>
         {% for user in listeUsers %}
 
             <tr>
-                <td>{{ user.nom }}</td>
-                <td>{{ user.prenom }}</td>
+                <td>{{ user.username }}</td>
+                <td></td>
             </tr>
 
         {% endfor %}

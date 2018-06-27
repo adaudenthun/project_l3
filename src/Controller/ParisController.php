@@ -18,7 +18,17 @@ class ParisController extends Controller{
 
         $em = $this->getDoctrine()->getManager();
 
-        $paris = $em->getRepository('App\Entity\Paris')->findAll();
+        $idUser = $this->getUser()->getId();
+
+        $user = $em->getRepository('App\Entity\User')->findOneBy(array(
+            'id' => $idUser
+        ));
+
+        $user = $user->getUsername();
+
+        $paris = $em->getRepository('App\Entity\Paris')->findBy(array(
+            'user' => $user
+        ));
 
         return $this->render('paris/index.html.twig', array(
             'paris' => $paris
@@ -40,10 +50,25 @@ class ParisController extends Controller{
         $compteur = 0;
 
         foreach ($resultats as $match){
-            $matchs[$compteur]['equipe1'] = key($match);
+
+            $nomEquipe = key($match);
+
+            $equipe1 = str_replace('é', 'e', $nomEquipe);
+
+            $equipe1 = str_replace(' ', '', $equipe1);
+
+            $matchs[$compteur]['equipe1'] = $equipe1;
 
             foreach ($match as $ligne){
-                $matchs[$compteur]['equipe2'] = $ligne['vs'];
+
+                $nomEquipe2 = $ligne['vs'];
+
+                $equipe2 = str_replace('é', 'e', $nomEquipe2);
+
+                $equipe2 = str_replace(' ', '', $equipe2);
+
+
+                $matchs[$compteur]['equipe2'] = $equipe2;
                 $matchs[$compteur]['date'] = $ligne['date'];
                 $matchs[$compteur]['score'] = $ligne['score'];
                 $matchs[$compteur]['live'] = $ligne['live'];
@@ -65,6 +90,8 @@ class ParisController extends Controller{
 
         $em = $this->getDoctrine()->getManager();
 
+        $idUser = $this->getUser()->getId();
+
         $pari = new Paris();
 
         $form = $this->createFormBuilder($pari)
@@ -80,9 +107,6 @@ class ParisController extends Controller{
             $pari = $form->getData();
 
 
-
-
-
             $score1 = $form->get('score_equipe1')->getData();
             $score2 = $form->get('score_equipe2')->getData();
 
@@ -90,6 +114,14 @@ class ParisController extends Controller{
             $pari->setEquipe2($equipe2);
 
             $pari->setDate(new \DateTime());
+
+            $user = $em->getRepository('App\Entity\User')->findOneBy(array(
+                'id' => $idUser
+            ));
+
+            $user = $user->getUsername();
+
+            $pari->setUser($user);
 
             $pari->setScoreEquipe1($score1);
             $pari->setScoreEquipe2($score2);

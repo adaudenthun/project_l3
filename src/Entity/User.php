@@ -147,6 +147,11 @@ class User implements UserInterface, \Serializable
      */
     private $roles = [];
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $points;
+
     public function getRoles():array
     {
         $roles = $this->roles;
@@ -167,5 +172,17 @@ class User implements UserInterface, \Serializable
     public function getPassword():string
     {
         return $this->mdp;
+    }
+
+    public function getPoints(): ?int
+    {
+        return $this->points;
+    }
+
+    public function setPoints(?int $points): self
+    {
+        $this->points = $points;
+
+        return $this;
     }
 }
