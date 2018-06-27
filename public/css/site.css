@@ -1,5 +1,32 @@
 .navbar {
-    background-image: linear-gradient(to left top, #ef9a9a, #ef7d79, #ea5e56, #e23c31, #d50000);
+    background-color: #263238;
+}
+
+.home {
+    margin: -40px -20px -20px -20px;
+    background-image: linear-gradient(to right bottom, #e03535, #ae6fcf);
+    height: 100vh;
+    width: calc(100% + 40px);
+}
+
+.home-container {
+    padding: 20% 40% 0 10%;
+    text-align: left;
+    color: rgb(230, 230, 230);
+}
+
+.title {
+    font-size: 60px;
+}
+
+.subtitle {
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+.line {
+    border-bottom: 2px solid rgb(230, 230, 230);
+    width: 100%;
 }
 
 .nav-link:hover, .nav-item.active {
@@ -16,11 +43,15 @@
     margin: 0 auto;
     max-width: 1200px;
     padding: 20px;
-    min-height: calc(100vh - calc(61px + 173px));
+    min-height: calc(100vh - calc(61px + 110px));
 }
 
 .form-vertical-center {
     margin-top: 15vh;
+}
+
+.table {
+    border-bottom: 2px solid #5eb5e0;
 }
 
 @media screen and (max-width: 992px) {
