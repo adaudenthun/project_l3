@@ -17,6 +17,8 @@ class SecurityController extends AbstractController
             return $this->redirectToRoute('app_index');
         }
 
+
+
         return $this->render('security/login.html.twig', [
 // dernier username saisi (si il y en a un)
             'last_username' => $helper->getLastUsername(),

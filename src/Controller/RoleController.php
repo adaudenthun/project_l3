@@ -9,15 +9,6 @@ use Symfony\Component\HttpFoundation\Response;
 class RoleController extends Controller
 {
 
-    public function index()
-    {
-        if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
-            return $this->redirectToRoute('app_security_login');
-        }
-
-        return $this->render('user/index.html.twig');
-    }
-
 
     public function admin()
     {
