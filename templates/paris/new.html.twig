@@ -7,7 +7,9 @@
 
     <div class="row justify-content-center form-vertical-center">
         <div class="col-5">
-            <form action="{{ path('app_security_login') }}" method="post">
+            <form name="form" method="post">
+
+                {{ form_row(form._token) }}
                 <p class="h4 text-center mb-4">Créer un pari pour le match <br /> {{ equipe1 }} / {{ equipe2 }}</p>
 
                 <div class="md-form">
