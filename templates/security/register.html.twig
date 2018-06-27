@@ -18,27 +18,9 @@
                 </div>
 
                 <div class="md-form">
-                    <i class="fa fa-user prefix grey-text"></i>
-                    <input type="text" id="{{ formUser.prenom.vars.id }}" name="{{ formUser.prenom.vars.full_name }}" required="required" class="form-control">
-                    {{ form_label(formUser.prenom) }}
-                </div>
-
-                <div class="md-form">
                     <i class="fa fa-soccer-ball-o  prefix grey-text"></i>
                     <input type="text" id="{{ formUser.username.vars.id }}" name="{{ formUser.username.vars.full_name }}" required="required" class="form-control">
                     {{ form_label(formUser.username) }}
-                </div>
-
-                <div class="md-form">
-                    <i class="fa fa-transgender prefix grey-text"></i>
-                    <input type="text" id="{{ formUser.sexe.vars.id }}" name="{{ formUser.sexe.vars.full_name }}" required="required" class="form-control">
-                    {{ form_label(formUser.sexe) }}
-                </div>
-
-                <div class="md-form">
-                    <i class="fa fa-user prefix grey-text"></i>
-                    <input type="text" id="{{ formUser.age.vars.id }}" name="{{ formUser.age.vars.full_name }}" required="required" class="form-control">
-                    {{ form_label(formUser.age) }}
                 </div>
 
                 <div class="md-form">
@@ -61,7 +43,7 @@
 
                 <div class="text-center mt-4">
                     <button class="btn blue lighten-1" type="submit">
-                        S'inscrire ! <i class="fa fa-paper-plane-o ml-2"></i>
+                        <i class="fa fa-sign-in" aria-hidden="true"></i> S'inscrire !
                     </button>
                 </div>
             </form>
