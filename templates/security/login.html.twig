@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Connexion{% endblock %}
+
 {% block body %}
     {% if error %}
         <div class="alert alert-danger">
@@ -7,25 +9,29 @@
         </div>
     {% endif %}
 
-    <div class="row">
-    <div class="col-sm-5">
-        <div class="well">
+    <div class="row justify-content-center form-vertical-center">
+        <div class="col-4">
             <form action="{{ path('app_security_login') }}" method="post">
-                <fieldset>
-                    <legend><i class="fa fa-lock" aria-hidden="true"></i> Connexion</legend>
-                    <div class="form-group">
-                        <label for="username">Pseudo</label>
-                        <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Mot de passe</label>
-                        <input type="password" id="password" name="_password" class="form-control" />
-                    </div>
+                <p class="h4 text-center mb-4">Connexion</p>
+
+                <div class="md-form">
+                    <i class="fa fa-user prefix grey-text"></i>
+                    <label for="username">Pseudo</label>
+                    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" class="form-control"/>
+                </div>
+
+                <div class="md-form">
+                    <i class="fa fa-lock prefix grey-text"></i>
+                    <label for="password">Mot de passe</label>
+                    <input type="text" id="password" name="_password" required="required" class="form-control"/>
+                </div>
+
+                <div class="text-center mt-4">
                     <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
-                    <button type="submit" class="btn btn-primary">
+                    <button class="btn blue lighten-1" type="submit">
                         <i class="fa fa-sign-in" aria-hidden="true"></i> Se connecter
                     </button>
-                </fieldset>
+                </div>
             </form>
         </div>
     </div>

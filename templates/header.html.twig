@@ -1,13 +1,13 @@
-<nav class="navbar navbar-expand-lg navbar-dark primary-color">
-    <a class="navbar-brand ml-3" href="#">L3Cup</a>
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand ml-3" href="{{ path('app_index') }}">L3Cup</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-con$
             aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-lg-5 mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_index') }}">Accueil</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('app_team_index') }}">Equipe</a>
@@ -16,6 +16,7 @@
                 <a class="nav-link" href="{{ path('app_paris_index') }}">Paris</a>
             </li>
         </ul>
-        <button class="btn btn-outline-white my-0" type="submit">Connexion</button>
+        <a class="btn btn-outline-white my-0" href="{{ path('app_security_login') }}">Connexion</a>
+        <a class="btn btn-outline-white my-0" href="{{ path('app_user_newUser') }}">Inscription</a>
     </div>
 </nav>
