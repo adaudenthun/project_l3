@@ -10,7 +10,7 @@
     {% endif %}
 
     <div class="row justify-content-center form-vertical-center">
-        <div class="col-4">
+        <div class="col-5">
             <form action="{{ path('app_security_login') }}" method="post">
                 <p class="h4 text-center mb-4">Connexion</p>
 
@@ -31,6 +31,7 @@
                     <button class="btn blue lighten-1" type="submit">
                         <i class="fa fa-sign-in" aria-hidden="true"></i> Se connecter
                     </button>
+                    <p>Pas encore de compte ? <a class="light-blue-text" href="{{ path('app_register') }}">Inscrivez-vous !</a></p>
                 </div>
             </form>
         </div>
