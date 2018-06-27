@@ -94,6 +94,11 @@ class UserController extends Controller
 
     /*function mySpace(Request $request){
 
+    //Lack of time to develop this function
+
+    function mySpace(Request $request){
+
+
         $user = $this->getUser();
         $form = $this->createForm(UserType::class, $user)
             ->add('nom', TextType::class, $user->getNom())
