@@ -92,7 +92,7 @@ class UserController extends Controller
     }
 
 
-    function mySpace(Request $request){
+    /*function mySpace(Request $request){
 
         $user = $this->getUser();
         $form = $this->createForm(UserType::class, $user)
@@ -108,5 +108,5 @@ class UserController extends Controller
         $form->handleRequest($request);
 
 
-    }
+    }*/
 }
