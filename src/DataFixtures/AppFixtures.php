@@ -18,12 +18,9 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        foreach ($this->getUserData() as [$nom, $prenom, $sexe, $age, $mdp, $mail, $username, $roles]) {
+        foreach ($this->getUserData() as [$nom, $mdp, $mail, $username, $roles]) {
             $user = new User();
             $user->setNom($nom);
-            $user->setPrenom($prenom);
-            $user->setSexe($sexe);
-            $user->setAge($age);
             $user->setMdp($this->passwordEncoder->encodePassword($user, $mdp));
             $user->setMail($mail);
             $user->setUsername($username);
@@ -39,9 +36,10 @@ class AppFixtures extends Fixture
     private function getUserData(): array
     {
         return [
-// $userData = [nom, $prenom, $sexe, $age, $mdp, $mail, $username, $roles];
-            ['Jane', 'Doe', 'F', '18', 'kitten', 'jane_admin@symfony.com', 'jane_admin', ['ROLE_ADMIN']],
-            ['Brad', 'titi', 'H', '20', 'password', 'brad_titi@symfony.com', 'bradLeBG', ['ROLE_USER']],
+// $userData = [nom, $mdp, $mail, $username, $roles];
+            ['Clerbout', 'password', 'sclerbout@symfony.com', 'Simon_admin', ['ROLE_ADMIN']],
+            ['Pruvost', 'password', 'qpruvost@symfony.com', 'Quentin_admin', ['ROLE_ADMIN']],
+            ['Lecoeuche', 'password', 'alecoeuche@symfony.com', 'Axel_admin', ['ROLE_ADMIN']],
         ];
     }
 

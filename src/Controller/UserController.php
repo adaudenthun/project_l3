@@ -38,6 +38,10 @@ class UserController extends Controller
     function newUser(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
 
+        if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirectToRoute('app_index');
+        }
+
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
 

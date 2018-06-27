@@ -28,20 +28,6 @@ class User implements UserInterface, \Serializable
      */
     private $nom;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $prenom;
-
-    /**
-     * @ORM\Column(type="string", length=1)
-     */
-    private $sexe;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $age;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -75,41 +61,6 @@ class User implements UserInterface, \Serializable
         return $this;
     }
 
-    public function getPrenom(): ?string
-    {
-        return $this->prenom;
-    }
-
-    public function setPrenom(string $prenom): self
-    {
-        $this->prenom = $prenom;
-
-        return $this;
-    }
-
-    public function getSexe(): ?string
-    {
-        return $this->sexe;
-    }
-
-    public function setSexe(string $sexe): self
-    {
-        $this->sexe = $sexe;
-
-        return $this;
-    }
-
-    public function getAge(): ?int
-    {
-        return $this->age;
-    }
-
-    public function setAge(int $age): self
-    {
-        $this->age = $age;
-
-        return $this;
-    }
 
     public function getMdp(): ?string
     {
