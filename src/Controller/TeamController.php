@@ -13,6 +13,10 @@ class TeamController extends Controller{
 
     function index(){
 
+        if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirectToRoute('app_security_login');
+        }
+
         $em = $this->getDoctrine()->getManager();
 
         $teams = $em->getRepository('App\Entity\Team')->findAll();
@@ -23,6 +27,10 @@ class TeamController extends Controller{
     }
 
     function newTeam(Request $request){
+
+        if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirectToRoute('app_security_login');
+        }
 
         $team = new Team();
 
@@ -55,6 +63,11 @@ class TeamController extends Controller{
 
     function Genere_Password($size)
     {
+
+        if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirectToRoute('app_security_login');
+        }
+
         // Initialisation des caractères utilisables
         $characters = array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z");
         $password = '';
@@ -67,6 +80,10 @@ class TeamController extends Controller{
     }
 
     function rejoindreTeam($idUser, $idTeam){
+
+        if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirectToRoute('app_security_login');
+        }
 
         $em = $this->getDoctrine()->getManager();
 
@@ -82,6 +99,10 @@ class TeamController extends Controller{
     }
 
     function listingUsers($idTeam){
+
+        if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirectToRoute('app_security_login');
+        }
 
         $em = $this->getDoctrine()->getManager();
 

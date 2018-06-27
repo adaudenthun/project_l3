@@ -12,6 +12,10 @@ class ParisController extends Controller{
 
     function index(){
 
+        if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirectToRoute('app_security_login');
+        }
+
         $em = $this->getDoctrine()->getManager();
 
         $paris = $em->getRepository('App\Entity\Paris')->findAll();
@@ -22,6 +26,10 @@ class ParisController extends Controller{
     }
 
     function indexMatch(){
+
+        if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirectToRoute('app_security_login');
+        }
 
         $client = new \GuzzleHttp\Client();
         $json = $client->request('GET', 'http://daudenthun.fr/api/listing');
@@ -50,6 +58,10 @@ class ParisController extends Controller{
     }
 
     function parierMatch(Request $request, $equipe1, $equipe2){
+
+        if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirectToRoute('app_security_login');
+        }
 
         $pari = new Paris();
 

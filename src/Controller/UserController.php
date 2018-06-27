@@ -12,14 +12,18 @@ use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\UserType;
-use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 
+class UserController extends Controller
+{
 
-class UserController extends Controller{
+    function index()
+    {
 
-    function index(){
+        if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirectToRoute('app_security_login');
+        }
 
         $em = $this->getDoctrine()->getManager();
 
@@ -31,9 +35,13 @@ class UserController extends Controller{
     }
 
 
-
     function newUser(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
+
+        if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirectToRoute('app_security_login');
+        }
+
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
 
