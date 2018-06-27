@@ -4,18 +4,71 @@
 
 {% block body %}
 
+    <div class="row justify-content-center big-form-vertical-center">
+        <div class="col-4">
+            <form name="form" method="post">
 
-{{ form_start(formUser) }}
-    {{ form_row(formUser.nom) }}
-    {{ form_row(formUser.prenom) }}
-    {{ form_row(formUser.username) }}
-    {{ form_row(formUser.sexe) }}
-    {{ form_row(formUser.age) }}
-    {{ form_row(formUser.mail) }}
-    {{ form_row(formUser.mdp.first) }}
-    {{ form_row(formUser.mdp.second) }}
+                {{ form_row(formUser._token) }}
+                <p class="h4 text-center mb-4">Créer un compte</p>
 
-<button type="submit">S'inscrire !</button>
-{{ form_end(formUser) }}
+                <div class="md-form">
+                    <i class="fa fa-user prefix grey-text"></i>
+                    <input type="text" id="{{ formUser.nom.vars.id }}" name="{{ formUser.nom.vars.full_name }}" required="required" class="form-control">
+                    {{ form_label(formUser.nom) }}
+                </div>
+
+                <div class="md-form">
+                    <i class="fa fa-user prefix grey-text"></i>
+                    <input type="text" id="{{ formUser.prenom.vars.id }}" name="{{ formUser.prenom.vars.full_name }}" required="required" class="form-control">
+                    {{ form_label(formUser.prenom) }}
+                </div>
+
+                <div class="md-form">
+                    <i class="fa fa-soccer-ball-o  prefix grey-text"></i>
+                    <input type="text" id="{{ formUser.username.vars.id }}" name="{{ formUser.username.vars.full_name }}" required="required" class="form-control">
+                    {{ form_label(formUser.username) }}
+                </div>
+
+                <div class="md-form">
+                    <i class="fa fa-transgender prefix grey-text"></i>
+                    <input type="text" id="{{ formUser.sexe.vars.id }}" name="{{ formUser.sexe.vars.full_name }}" required="required" class="form-control">
+                    {{ form_label(formUser.sexe) }}
+                </div>
+
+                <div class="md-form">
+                    <i class="fa fa-user prefix grey-text"></i>
+                    <input type="text" id="{{ formUser.age.vars.id }}" name="{{ formUser.age.vars.full_name }}" required="required" class="form-control">
+                    {{ form_label(formUser.age) }}
+                </div>
+
+                <div class="md-form">
+                    <i class="fa fa-envelope prefix grey-text"></i>
+                    <input type="email" id="{{ formUser.mail.vars.id }}" name="{{ formUser.mail.vars.full_name }}" required="required" class="form-control">
+                    {{ form_label(formUser.mail) }}
+                </div>
+
+                <div class="md-form">
+                    <i class="fa fa-lock prefix grey-text"></i>
+                    <input type="password" id="{{ formUser.mdp.first.vars.id }}" name="{{ formUser.mdp.first.vars.full_name }}" required="required" class="form-control">
+                    {{ form_label(formUser.mdp.first) }}
+                </div>
+
+                <div class="md-form">
+                    <i class="fa fa-lock prefix grey-text"></i>
+                    <input type="password" id="{{ formUser.mdp.second.vars.id }}" name="{{ formUser.mdp.second.vars.full_name }}" required="required" class="form-control">
+                    {{ form_label(formUser.mdp.second) }}
+                </div>
+
+                <div class="text-center mt-4">
+                    <button class="btn blue lighten-1" type="submit">
+                        S'inscrire ! <i class="fa fa-paper-plane-o ml-2"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
 
 {% endblock body %}
