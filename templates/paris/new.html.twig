@@ -1,15 +1,36 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} {% endblock %}
+{% block title %}Pari pour {{ equipe1 }} / {{ equipe2 }}{% endblock %}
 
 {% block body %}
 
-    <h3>Créer un Pari pour le match {{ equipe1 }} / {{ equipe2 }}</h3>
 
-    {{ form_start(form) }}
+    <div class="row justify-content-center form-vertical-center">
+        <div class="col-5">
+            <form action="{{ path('app_security_login') }}" method="post">
+                <p class="h4 text-center mb-4">Créer un pari pour le match <br /> {{ equipe1 }} / {{ equipe2 }}</p>
 
-    {{ form_widget(form) }}
+                <div class="md-form">
+                    <i class="fa fa-soccer-ball-o prefix grey-text"></i>
+                    <input type="number" id="{{ form.score_equipe1.vars.id }}" name="{{ form.score_equipe1.vars.full_name }}" required="required" class="form-control">
+                    {{ form_label(form.score_equipe1) }}
+                </div>
 
-    {{ form_end(form) }}
+                <div class="md-form">
+                    <i class="fa fa-soccer-ball-o prefix grey-text"></i>
+                    <input type="number" id="{{ form.score_equipe2.vars.id }}" name="{{ form.score_equipe2.vars.full_name }}" required="required" class="form-control">
+                    {{ form_label(form.score_equipe2) }}
+                </div>
+
+                <div class="text-center mt-4">
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
+                    <button class="btn blue lighten-1" type="submit">
+                        Valider <i class="fa fa-paper-plane-o ml-2"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
 
 {% endblock %}
