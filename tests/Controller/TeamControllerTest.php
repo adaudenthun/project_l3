@@ -19,14 +19,12 @@ class TeamControllerTest extends WebTestCase {
 
         $client = static::createClient();
 
-        $client->request('GET', '/team/new');
+        $crawler = $client->request('GET', '/team/new');
 
-//        $this->assertGreaterThan(
-//            0,
-//            $crawler->filter('html:contains("")')->count()
-//        );
-
-
+        $this->assertGreaterThan(
+            1,
+            $crawler->filter('html:contains("form")')->count()
+        );
 
     }
 
