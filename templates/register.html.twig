@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Créer un compte {% endblock %}
+
+{% block body %}
+
+
+{{ form_start(formUser) }}
+    {{ form_row(formUser.nom) }}
+    {{ form_row(formUser.prenom) }}
+    {{ form_row(formUser.username) }}
+    {{ form_row(formUser.sexe) }}
+    {{ form_row(formUser.age) }}
+    {{ form_row(formUser.mail) }}
+    {{ form_row(formUser.mdp.first) }}
+    {{ form_row(formUser.mdp.second) }}
+
+<button type="submit">S'inscrire !</button>
+{{ form_end(formUser) }}
+
+{% endblock body %}

@@ -4,10 +4,16 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @ORM\Table(name="user")
+ * @UniqueEntity(fields="mail", message="Email déjà pris")
+ * @UniqueEntity(fields="username", message="Username déjà pris")
  */
+
 class User implements UserInterface, \Serializable
 {
     /**
@@ -183,6 +189,12 @@ class User implements UserInterface, \Serializable
         [$this->id, $this->username, $this->mdp] = unserialize($serialized, ['allowed_classes' => false]);
     }
 
+    /**
+     * @var array
+     *
+     * @ORM\Column(type="array")
+     */
+    private $roles = [];
 
     public function getRoles():array
     {
