@@ -63,6 +63,8 @@ class ParisController extends Controller{
             return $this->redirectToRoute('app_security_login');
         }
 
+        $em = $this->getDoctrine()->getManager();
+
         $pari = new Paris();
 
         $form = $this->createFormBuilder($pari)
@@ -77,7 +79,9 @@ class ParisController extends Controller{
         if ($form->isSubmitted() && $form->isValid()) {
             $pari = $form->getData();
 
-            $em = $this->getDoctrine()->getManager();
+
+
+
 
             $score1 = $form->get('score_equipe1')->getData();
             $score2 = $form->get('score_equipe2')->getData();

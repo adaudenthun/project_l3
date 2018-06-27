@@ -27,10 +27,14 @@
                     <td>{{ match.equipe2 }}</td>
                     <td>{{ match.date }}</td>
                     <td>
-                        {% if match.live %}En cours{% elseif match.score.0 is not null and match.score.1 is not null %}Match terminé{% else %}Match non commencé{% endif %}
+                        {% if match.live %}En cours{% elseif match.score is not null and match.score is not null %}Match terminé{% else %}Match non commencé{% endif %}
                     </td>
-                    <td>{{ match.score.0 }} - {{ match.score.1 }}</td>
-                    {% if match.score.0 is null and match.score.1 is null and match.live !="true" %}
+                    <td>
+                        {% if match.score %}
+                            {{ match.score.0 }} - {{ match.score.1 }}
+                        {% endif %}
+                    </td>
+                    {% if match.score is null and match.score is null and match.live !="true" %}
                         <td><a href="{{ path('app_paris_new', { 'equipe1': match.equipe1, 'equipe2': match.equipe2 }) }}">Parier sur ce Match</a></td>
                         {% else %}
                         <td>Impossible de parier</td>
