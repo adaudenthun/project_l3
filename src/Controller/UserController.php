@@ -92,6 +92,8 @@ class UserController extends Controller
     }
 
 
+    //Lack of time to develop this function
+
     function mySpace(Request $request){
 
         $user = $this->getUser();
