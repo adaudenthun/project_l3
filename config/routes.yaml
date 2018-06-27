@@ -40,8 +40,14 @@ app_team_listingUsers:
 
 # Only for admin account
 app_user_index:
-      path: /user
+      path: /admin/users
       controller: App\Controller\UserController::index
+
+app_delete_user:
+      path: /admin/users/{idUser}
+      controller: App\Controller\UserController::deleteUser
+      requirements:
+                idUser: '\d+'
 
 app_security_login:
       path: /login

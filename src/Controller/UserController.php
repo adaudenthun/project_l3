@@ -25,11 +25,17 @@ class UserController extends Controller
             return $this->redirectToRoute('app_security_login');
         }
 
+        if (!$this->isGranted('ROLE_ADMIN')) {
+
+            return $this->redirectToRoute('app_index');
+
+        }
+
         $em = $this->getDoctrine()->getManager();
 
         $user = $em->getRepository('App\Entity\User')->findAll();
 
-        return $this->render('user/index.html.twig', array(
+        return $this->render('admin/index.html.twig', array(
             'users' => $user
         ));
     }
@@ -66,6 +72,22 @@ class UserController extends Controller
             'security/register.html.twig',
             array('formUser' => $form->createView())
         );
+
+    }
+
+    function deleteUser($idUser)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $usrRepo = $em->getRepository(User::class);
+
+        $user = $usrRepo->find($idUser);
+        $em->remove($user);
+        $em->flush();
+
+
+        return $this->redirectToRoute('app_user_index');
+
 
     }
 }
