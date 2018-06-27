@@ -64,3 +64,7 @@ app_admin:
 app_register:
       path: /register
       controller: App\Controller\UserController::newUser
+
+app_mySpace:
+      path: /me
+      controller: App\Controller\UserController::mySpace
